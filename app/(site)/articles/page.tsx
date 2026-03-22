@@ -15,15 +15,24 @@ export default async function ArticlesPage() {
   const articles = await client.fetch<Article[]>(ARTICLES_QUERY)
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold mb-10">All Articles</h1>
+    <main className="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-24 min-h-screen">
+      <div className="max-w-3xl mb-16">
+        <h1 className="text-5xl md:text-7xl font-serif font-black leading-[1.1] tracking-tight mb-8 text-foreground animate-fade-in">
+          Latest Reporting
+        </h1>
+        <p className="text-xl md:text-2xl text-muted font-serif italic mb-10 max-w-2xl text-balance animate-fade-in" style={{ animationDelay: '100ms' }}>
+          Explore our complete archive of in-depth analysis, timely news, and exclusive reports.
+        </p>
+      </div>
 
       {articles.length === 0 ? (
-        <p className="text-neutral-400">No articles yet.</p>
+        <p className="text-muted font-serif italic text-xl border-t border-stone-200 dark:border-stone-800 pt-8 animate-fade-in">
+          No records currently available. Check back soon.
+        </p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-col border-t-2 border-foreground pt-4 animate-fade-in" style={{ animationDelay: '200ms' }}>
           {articles.map((article) => (
-            <ArticleCard key={article._id} article={article} />
+            <ArticleCard key={article._id} article={article} layout="list" />
           ))}
         </div>
       )}

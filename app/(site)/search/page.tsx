@@ -37,45 +37,46 @@ export default function SearchPage() {
   }
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold mb-8">Search</h1>
-
-      {/* Search input */}
-      <div className="flex gap-3 mb-10">
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Search articles..."
-          className="flex-1 px-4 py-2.5 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <button
-          onClick={handleSearch}
-          disabled={loading}
-          className="px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white text-sm font-medium transition-colors"
-        >
-          {loading ? 'Searching...' : 'Search'}
-        </button>
+    <main className="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-24 min-h-screen">
+      <div className="max-w-3xl mx-auto text-center mb-20 animate-fade-in">
+        <h1 className="text-5xl md:text-7xl font-serif font-black leading-[1.1] mb-12 text-foreground">
+          Search Archives
+        </h1>
+        <div className="relative group mx-auto">
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Search authors, topics, keywords..."
+            className="w-full bg-card-bg border border-border focus:border-accent focus:ring-1 focus:ring-accent py-6 pl-6 pr-36 text-xl md:text-3xl font-serif text-foreground placeholder-stone-400 focus:outline-none transition-all rounded-sm shadow-sm"
+          />
+          <button
+            onClick={handleSearch}
+            disabled={loading}
+            className="absolute right-2 bottom-2 top-2 px-8 border-none bg-accent text-[11px] font-sans font-bold uppercase tracking-widest text-white hover:bg-[#A00F18] transition-all duration-300 rounded-sm disabled:opacity-50"
+          >
+            {loading ? 'Searching' : 'Search'}
+          </button>
+        </div>
       </div>
 
-      {/* Results */}
       {searched && !loading && (
-        <>
-          <p className="text-sm text-neutral-400 mb-6">
-            {results.length} result{results.length !== 1 ? 's' : ''} for "{query}"
+        <div className="max-w-4xl mx-auto animate-fade-in">
+          <p className="text-[11px] font-sans font-bold uppercase tracking-widest text-muted mb-8 border-b border-border pb-4">
+            {results.length} result{results.length !== 1 ? 's' : ''} matched &quot;{query}&quot;
           </p>
 
           {results.length === 0 ? (
-            <p className="text-neutral-400">No articles found. Try a different keyword.</p>
+            <p className="text-2xl font-serif italic text-muted max-w-lg">No coverage found. We recommend trying a more general search term.</p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex flex-col border-t-2 border-foreground pt-4">
               {results.map((article) => (
-                <ArticleCard key={article._id} article={article} />
+                <ArticleCard key={article._id} article={article} layout="list" />
               ))}
             </div>
           )}
-        </>
+        </div>
       )}
     </main>
   )
