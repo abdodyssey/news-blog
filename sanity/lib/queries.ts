@@ -60,8 +60,8 @@ export const ARTICLES_BY_CATEGORY_QUERY = defineQuery(`
 `)
 
 // Articles by tag
-export const ARTICLES_BY_TAG_QUERY = `
-  *[_type == "article" && $tag in tags] | order(publishedAt desc) {
+export const ARTICLES_BY_TAG_QUERY = defineQuery(`
+  *[_type == "article" && $slug in tags] | order(publishedAt desc) {
     _id,
     title,
     slug,
@@ -71,7 +71,7 @@ export const ARTICLES_BY_TAG_QUERY = `
     "author": author->{ name, slug },
     "category": category->{ title, slug }
   }
-`
+`)
 
 // Articles by author
 export const ARTICLES_BY_AUTHOR_QUERY = defineQuery(`

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function TagPage({ params }: Props) {
   const { slug } = await params;
   const articles = await client.fetch<Article[]>(ARTICLES_BY_TAG_QUERY, {
-    tag: slug,
+    slug,
   });
 
   if (!articles) notFound();

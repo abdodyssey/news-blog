@@ -17,12 +17,12 @@ export default function ContactPage() {
     <main className="max-w-2xl mx-auto px-4 py-10">
       <h1 className="text-3xl font-bold mb-2">Contact Us</h1>
       <p className="text-neutral-400 mb-10">
-        Have a question or story tip? We'd love to hear from you.
+        Have a question or story tip? We&apos;d love to hear from you.
       </p>
 
       {submitted ? (
         <div className="rounded-xl border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950 p-6 text-green-700 dark:text-green-300">
-          ✅ Thanks for reaching out! We'll get back to you soon.
+          ✅ Thanks for reaching out! We&apos;ll get back to you soon.
         </div>
       ) : (
         <div className="flex flex-col gap-5">
