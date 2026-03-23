@@ -49,19 +49,19 @@ export function NavbarClient({ categories }: NavbarProps) {
         <div className={`overflow-hidden transition-all duration-300 ${scrolled ? 'max-h-0 opacity-0' : 'max-h-20 opacity-100 border-b border-border'}`}>
           <div className="max-w-7xl mx-auto px-6 lg:px-8 h-12 flex items-center justify-between text-[10px] font-sans font-bold uppercase tracking-widest text-foreground">
             {/* Left: Site Info */}
-            <div className="w-1/3 flex items-center">
-              <span className="hidden md:inline">NewsBlog Edition</span>
+            <div className="hidden md:flex w-1/3 items-center">
+              <span>NewsBlog Edition</span>
             </div>
             
             {/* Center: Date */}
-            <div className="w-1/3 flex justify-center text-muted">
+            <div className="flex-1 md:w-1/3 flex justify-start md:justify-center text-muted whitespace-nowrap">
               {dateString}
             </div>
 
-            {/* Right: Search */}
-            <div className="w-1/3 flex justify-end items-center gap-4">
+            {/* Right: Search & Theme */}
+            <div className="flex-1 md:w-1/3 flex justify-end items-center gap-2 md:gap-4">
               <ThemeToggle />
-              <Link href="/search" className="flex items-center gap-2 hover:text-accent transition-colors hover-underline-slide">
+              <Link href="/search" className="hidden md:flex items-center gap-2 hover:text-accent transition-colors hover-underline-slide">
                 <span>Search</span>
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
               </Link>
